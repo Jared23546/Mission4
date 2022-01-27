@@ -8,19 +8,19 @@
 <div>
     <form method="post">
         <label asp-for="Category">Category: </label>
-        <input id="Category" asp-for="Category" /> <br />
+        <input id="Category" asp-for="Category" required/> <br />
 
         <label asp-for="Title">Title: </label>
-        <input id="Title" asp-for="Title" /> <br />
+        <input id="Title" asp-for="Title" required/> <br />
 
         <label asp-for="Year">Year: </label>
-        <input id="Year" asp-for="Year" /> <br />
+        <input id="Year" asp-for="Year" required/> <br />
 
         <label asp-for="Director">Director: </label>
-        <input id="Director" asp-for="Director" /> <br />
+        <input id="Director" asp-for="Director" required/> <br />
 
         <label asp-for="Rating">Rating: </label>
-        <select id="Rating" asp-for="Rating">
+        <select id="Rating" asp-for="Rating" required>
             <option value="G">G</option>
             <option value="PG">PG</option>
             <option value="PG-13">PG-13</option>
@@ -28,15 +28,15 @@
         </select> <br />
 
         <label asp-for="Edited">Edited: </label>
-        <select id="Edited" asp-for="Edited">
+        <select id="Edited" asp-for="Edited" required>
             <option value="true">yes</option>
             <option value="false">no</option>
         </select> <br />
 
-        <label asp-for="Lentto">Lent to: </label>
+        <label asp-for="Lentto" required>Lent to: </label>
         <input id="Lent_to" asp-for="Lentto" /> <br />
 
-        <label asp-for="Notes">Notes: </label>
+        <label asp-for="Notes" required>Notes: </label>
         <textarea id="Notes" asp-for="Notes" rows="4"></textarea><br />
 
         <button type="submit">Submit</button>
