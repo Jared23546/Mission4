@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
+//this is the Movie table that holds rows of movie responses. below are the columns
 namespace Mission4.Models
 {
     public class MovieResponse
@@ -9,10 +10,6 @@ namespace Mission4.Models
         [Required]
 
         public int MovieId { get; set; }
-
-        [Required]
-
-        public string Category { get; set; }
 
         [Required]
 
@@ -37,5 +34,11 @@ namespace Mission4.Models
         [MaxLength(20)]
 
         public string Notes { get; set; }
+
+
+        //creates the foreign key relationship
+        [Required]
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
     }
 }

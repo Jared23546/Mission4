@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Movie List";
+}
+@*bring in the list of movie responses*@
+@model List<MovieResponse>
+
+@*uses bootstrap to make the table pretty*@
+<table class="table table-bordered table-striped">
+
+    @*header of the table*@
+    <thead class="font-weight-bold">
+        <tr>
+            <td>Category</td>
+            <td>Title</td>
+            <td>Year</td>
+            <td>Director</td>
+            <td>Rating</td>
+            <td>Edited</td>
+            <td>Lent to</td>
+            <td>Notes</td>
+        </tr>
+    </thead>
+
+    @*body of the table*@
+    <tbody>
+
+        @*for every row of data. Model contains our information in it*@
+        @foreach (var x in Model)
+        {
+        <tr>
+            <td>@x.Category.CategoryName</td>
+            <td>@x.Title</td>
+            <td>@x.Year</td>
+            <td>@x.Director</td>
+            <td>@x.Rating</td>
+            <td>@x.Edited</td>
+            <td>@x.Lentto</td>
+            <td>@x.Notes</td>
+
+            @*add on the edit and delete. when clicked, send them to the controller to the edit/delete action*@
+
+            <td><a asp-controller="Home" asp-action="Edit" asp-route-movieid="@x.MovieId">Edit</a></td>
+            <td><a asp-controller="Home" asp-action="Delete" asp-route-movieid="@x.MovieId">Delete</a></td>
+        </tr>
+        }
+    </tbody>
+
+</table>

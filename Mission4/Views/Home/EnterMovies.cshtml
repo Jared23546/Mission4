@@ -7,8 +7,18 @@
 <h2>Enter your favorite movie!</h2>
 <div>
     <form method="post">
-        <label asp-for="Category">Category: </label>
-        <input id="Category" asp-for="Category" required/> <br />
+        <label asp-for="CategoryId">Category: </label>
+        <select asp-for="CategoryId" required>
+            <option value="">Select a Category</option>
+
+            @*this makes an option for each entry of the caregory table*@
+            @*when they select a category it passes the category id*@
+            @foreach (Category c in ViewBag.Categories)
+            {
+                <option value="@c.CategoryId">@c.CategoryName</option>
+            }
+
+        </select><br />
 
         <label asp-for="Title">Title: </label>
         <input id="Title" asp-for="Title" required/> <br />

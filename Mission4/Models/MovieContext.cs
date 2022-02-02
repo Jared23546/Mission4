@@ -11,15 +11,27 @@ namespace Mission4.Models
         //leave blank
         }
 
+        //this pulls data from the responses table
         public DbSet<MovieResponse> Responses { get; set; } //responses is a set of data
+
+        public DbSet<Category> Categories { get; set; } //Categories is a set of data from the category table
+
 
         protected override void OnModelCreating(ModelBuilder mb)
         {
+            //seed the category table
+            mb.Entity<Category>().HasData(
+                new Category { CategoryId = 1, CategoryName = "Horror" },
+                new Category { CategoryId = 2, CategoryName = "Action" },
+                new Category { CategoryId = 3, CategoryName = "Romance" }
+            );
+
+            //seed the movie data
             mb.Entity<MovieResponse>().HasData(
                 new MovieResponse
                 {
                     MovieId = 1,
-                    Category = "Horror",
+                    CategoryId = 1,
                     Title = "The Shining",
                     Year = "1980",
                     Director = "Speilberg",
@@ -31,7 +43,7 @@ namespace Mission4.Models
                 new MovieResponse
                 {
                     MovieId = 2,
-                    Category = "Action",
+                    CategoryId = 2,
                     Title = "End game",
                     Year = "2019",
                     Director = "taiki watiti",
@@ -43,7 +55,7 @@ namespace Mission4.Models
                 new MovieResponse
                 {
                     MovieId = 3,
-                    Category = "Feel good",
+                    CategoryId = 3,
                     Title = "Good Will Hunting",
                     Year = "1975",
                     Director = "Matt Damon",
@@ -52,7 +64,8 @@ namespace Mission4.Models
                     Lentto = "",
                     Notes = "Best movie ever!"
                 }
-            ); ;
+            );
+            
         }
 
     }
